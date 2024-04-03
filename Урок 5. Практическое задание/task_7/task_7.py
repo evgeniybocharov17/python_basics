@@ -9,6 +9,8 @@
 [{"firm_1": 5000, "firm_2": 3000, "firm_3": 1000}, {"average_profit": 2000}]
 Подсказка: использовать менеджер контекста.
 """
+
+
 import json
 
 my_f = open("task7_lesson5.txt", "r")
@@ -44,4 +46,3 @@ data = [profit, av_profit, loss]
 with open("my_json.json", "w") as write_f:
     json.dump(data, write_f)
 my_f.close()
-
