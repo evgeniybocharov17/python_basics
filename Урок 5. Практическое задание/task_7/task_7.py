@@ -9,6 +9,8 @@
 [{"firm_1": 5000, "firm_2": 3000, "firm_3": 1000}, {"average_profit": 2000}]
 Подсказка: использовать менеджер контекста.
 """
+import json
+
 my_f = open("task7_lesson5.txt", "r")
 content = my_f.readlines() #извлекаем из текстового файл полный список строк
 profit = {} #данная переменная будет обновляться в следующем цикле
@@ -35,7 +37,11 @@ for el in content: #в данном цикле мы создаём из стро
     else: # Убытки склыдваем в переменную lines2
         lines2 += line
     profit.update(my_dict)  #объединяем все прибыльные фирмы в один словарь
-    loss = {"убытки": lines2} #создаём словарь с суммой убытков
-    av_profit = {"средняя прибыль": lines // divider}
+    loss = {"losses": lines2} #создаём словарь с суммой убытков
+    av_profit = {"average profit": lines // divider}
 print([profit, av_profit, loss])
+data = [profit, av_profit, loss]
+with open("my_json.json", "w") as write_f:
+    json.dump(data, write_f)
 my_f.close()
+
